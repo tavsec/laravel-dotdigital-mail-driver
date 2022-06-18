@@ -1,5 +1,11 @@
 # Laravel DotDigital mail driver
-This package provides Laravel email driver which uses DotDigital transactional emails via API.
+This package provides Laravel email driver which uses [DotDigital](https://dotdigital.com/) transactional emails via API.
+
+## Installation
+In the root directory of the project, run:
+```bash
+composer require tavsec/laravel-dotdigital-mail-driver
+```
 
 ## Config
 Add the following code snippet under `config\mail.php`:
