@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">7.4",
+        "php": ">7.4|>8.0",
         "illuminate/support": "^9.17",
         "illuminate/mail": "^9.17",
         "guzzlehttp/guzzle": "^7.4",
