@@ -42,10 +42,19 @@ class DotdigitalTransport extends AbstractTransport
             "subject" => $email->getSubject()
         ];
 
-        if($rawContent = $email->getTextBody())
+        if ($rawContent = $email->getTextBody())
             $data["plainTextContent"] = $rawContent;
-        if($htmlContent = $email->getHtmlBody())
+        if ($htmlContent = $email->getHtmlBody())
             $data["htmlContent"] = $htmlContent;
+        if ($attachments = $email->getAttachments()) {
+            foreach ($attachments as $attachment) {
+                $data["attachments"][] = [
+                    "fileName" => $attachment->getPreparedHeaders()->getHeaderParameter('Content-Disposition', 'filename'),
+                    "mimeType" => $attachment->getMediaType() . "/" . $attachment->getMediaSubtype(),
+                    "content" => base64_encode($attachment->getBody())
+                ];
+            }
+        }
 
         $data["toAddresses"] = collect($email->getTo())->map(fn($el) => $el->getAddress())->toArray();
 
@@ -70,11 +79,13 @@ class DotdigitalTransport extends AbstractTransport
     /**
      * @throws GuzzleException
      */
-    private function post($payload){
+    private function post($payload)
+    {
         return $this->client->request("POST", $this->getEndpoint(), $payload);
     }
 
-    private function getEndpoint(){
+    private function getEndpoint()
+    {
         return "https://" . $this->region . "-api.dotdigital.com/v2/email";
     }
 }
