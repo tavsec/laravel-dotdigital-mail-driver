@@ -1,0 +1,21 @@
+{
+    "name": "tavsec/laravel-dotdigital-mail-driver",
+    "description": "Laravel email driver for DotDigital transactional emails",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tavsec\\LaravelDotdigitalMailDriver\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Timotej Avsec",
+            "email": "avsectimotej1@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^9.17",
+        "illuminate/mail": "^9.17"
+    }
+}
