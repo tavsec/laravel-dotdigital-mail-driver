@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "php": ">7.4|>8.0",
-        "illuminate/support": "^9.17",
-        "illuminate/mail": "^9.17",
+        "php": ">7.4|>8.0|>8.1",
+        "illuminate/support": "^9.17|10.*",
+        "illuminate/mail": "^9.17|^10.*",
         "guzzlehttp/guzzle": "^7.4",
         "ext-curl": "*"
     },
